@@ -5,10 +5,10 @@ div.input{
     position: relative;
     
     /* this can be adjusted */
-    height:56px;
-    width :98% ;
-    max-width  : 220px;
-    margin:10px;
+    height: 56px;
+    width: calc(100% - (2 * /*margin:*/ 10px));
+    max-width: 220px;
+    margin: 10px;
     font-family: "Arial";
     
 }
