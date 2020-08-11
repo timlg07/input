@@ -1,6 +1,6 @@
 # Input
 (inspired by Googles Material Design)  
-demo: [tim-greller.tk/fl-elements/inpt](http://tim-greller.tk/fl-elements/inpt)  
+demo: [git.tim-greller.de/input](https://tim-greller.de/git/input)  
 
 ![Result](inpt.gif)
 
