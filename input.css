@@ -48,13 +48,13 @@ div.input > input:focus {
 }
 
 /* define the different primary colors */
-div.input        > input:focus, /* use green as default color */
-div.input.green  > input:focus {--primary-color: #0B6;}
-div.input.blue   > input:focus {--primary-color: #06B;}
-div.input.red    > input:focus {--primary-color: #B02;}
-div.input.yellow > input:focus {--primary-color: #FC1;}
-div.input.orange > input:focus {--primary-color: #F62;}
-div.input.purple > input:focus {--primary-color: #60E;}
+div.input, /* use green as default color */
+div.input.green  {--primary-color: #0B6;}
+div.input.blue   {--primary-color: #06B;}
+div.input.red    {--primary-color: #B02;}
+div.input.yellow {--primary-color: #FC1;}
+div.input.orange {--primary-color: #F62;}
+div.input.purple {--primary-color: #60E;}
 
 
 /* The label describing the input field */
