@@ -26,11 +26,13 @@ div.input > input {
     height: 100%;
     box-sizing: border-box;
     
-    /* space around the text */
-    padding: var(--vertical-padding) var(--horizontal-padding);
+    /* Space around the text; Subtract border size because border-box-sizing is used. */
+    padding: calc(var(--vertical-padding)   - var(--input-border-size))
+             calc(var(--horizontal-padding) - var(--input-border-size));
     
     /* border */
-    border: 1.2px solid rgba(0, 0, 0, .28);
+    --input-border-size: 1.2px;
+    border: var(--input-border-size) solid rgba(0, 0, 0, .28);
     border-radius: 7px;
     transition: border .2s;
     
@@ -40,14 +42,16 @@ div.input > input {
 
 div.input > input:hover {
     
-    /* darker border on hover */
-    border: 1.6px solid rgba(0, 0, 0, .445);
+    /* darker and thicker border on hover */
+    --input-border-size: 1.6px;
+    border-color: rgba(0, 0, 0, .445);
 }
 
 div.input > input:focus {
     
     /* colored border on focus, instead of outline */
-    border: 2.3px solid var(--primary-color);
+    --input-border-size: 2.3px;
+    border-color: var(--primary-color);
     outline: 0;
 }
 
@@ -68,14 +72,19 @@ div.input > label {
     position: absolute;
     top: 50%;
     transform: translate(0%, -50%);
-    left: calc(var(--horizontal-padding) - 2.5px);
+    /* 
+     * Subtract the current label-border-size from the input padding, so that the 
+     * resulting space between the container border and the label text is the same 
+     * as between the container border and the input text.
+     */
+    left: calc(var(--horizontal-padding) - var(--label-border-size));
     
     /* bring it to the top but without being target of mouse events */
     z-index: 100;
     pointer-events: none;
     
     /* handle labels with much text */
-    max-width: calc(100% - (2 * var(--horizontal-padding) + 6px));
+    max-width: calc(100% - (2 * var(--horizontal-padding)));
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
@@ -85,7 +94,8 @@ div.input > label {
      * the input is in focus, but is needed also here so the 
      * left-value is correct.
      */
-    padding-left: 5px;
+    --label-border-size: 5px;
+    padding-left:  var(--label-border-size);
     
     /* smooth transition to the top */
     transition-property: color, top, font;
@@ -117,8 +127,8 @@ div.input > input:valid ~ label {
      * since text can overlap paddings, but not borders.
      */
     padding: 0;
-    border-left:  5px solid transparent;
-    border-right: 5px solid transparent;
+    border-left:  var(--label-border-size) solid transparent;
+    border-right: var(--label-border-size) solid transparent;
     
     /* decrease the font size */
     font-size: 13px;
