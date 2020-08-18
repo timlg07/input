@@ -4,11 +4,16 @@
     /* this is needed for label-positioning */
     position: relative;
     
+    /* padding properties */
+    --horizontal-padding: 16px;
+    --vertical-padding: 14px;
+    
     /* this can be adjusted */
+    --container-margin: 10px;
     height: 56px;
-    width: calc(100% - (2 * /*margin:*/ 10px));
+    width: calc(100% - (2 * var(--container-margin)));
     max-width: 220px;
-    margin: 10px;
+    margin: var(--container-margin);
     font-family: "Arial";
 }
 
@@ -21,11 +26,13 @@ div.input > input {
     height: 100%;
     box-sizing: border-box;
     
-    /* space around the text */
-    padding: 14px 16px;
+    /* Space around the text; Subtract border size because border-box-sizing is used. */
+    padding: calc(var(--vertical-padding)   - var(--input-border-size))
+             calc(var(--horizontal-padding) - var(--input-border-size));
     
     /* border */
-    border: 1.2px solid rgba(0, 0, 0, .28);
+    --input-border-size: 1.2px;
+    border: var(--input-border-size) solid rgba(0, 0, 0, .28);
     border-radius: 7px;
     transition: border .2s;
     
@@ -35,23 +42,27 @@ div.input > input {
 
 div.input > input:hover {
     
-    /* darker border on hover */
-    border: 1.6px solid rgba(0, 0, 0, .445);
+    /* darker and thicker border on hover */
+    --input-border-size: 1.6px;
+    border-color: rgba(0, 0, 0, .445);
 }
 
 div.input > input:focus {
     
     /* colored border on focus, instead of outline */
-    border: 2.3px solid #0B6;
+    --input-border-size: 2.3px;
+    border-color: var(--primary-color);
     outline: 0;
 }
-/* different border colors */
-div.input.yellow > input:focus {border-color: #FC1;}
-div.input.orange > input:focus {border-color: #F62;}
-div.input.purple > input:focus {border-color: #60E;}
-div.input.green  > input:focus {border-color: #0B6;}
-div.input.blue   > input:focus {border-color: #06B;}
-div.input.red    > input:focus {border-color: #B02;}
+
+/* define the different primary colors */
+div.input, /* use green as default color */
+div.input.green  {--primary-color: #0B6;}
+div.input.blue   {--primary-color: #06B;}
+div.input.red    {--primary-color: #B02;}
+div.input.yellow {--primary-color: #FC1;}
+div.input.orange {--primary-color: #F62;}
+div.input.purple {--primary-color: #60E;}
 
 
 /* The label describing the input field */
@@ -61,14 +72,19 @@ div.input > label {
     position: absolute;
     top: 50%;
     transform: translate(0%, -50%);
-    left: calc(16px - 2.5px);
+    /* 
+     * Subtract the current label-border-size from the input padding, so that the 
+     * resulting space between the container border and the label text is the same 
+     * as between the container border and the input text.
+     */
+    left: calc(var(--horizontal-padding) - var(--label-border-size));
     
     /* bring it to the top but without being target of mouse events */
     z-index: 100;
     pointer-events: none;
     
     /* handle labels with much text */
-    max-width: calc(100% - (2 * 16px + 6px));
+    max-width: calc(100% - (2 * var(--horizontal-padding)));
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
@@ -78,7 +94,8 @@ div.input > label {
      * the input is in focus, but is needed also here so the 
      * left-value is correct.
      */
-    padding-left: 5px;
+    --label-border-size: 5px;
+    padding-left:  var(--label-border-size);
     
     /* smooth transition to the top */
     transition-property: color, top, font;
@@ -110,8 +127,8 @@ div.input > input:valid ~ label {
      * since text can overlap paddings, but not borders.
      */
     padding: 0;
-    border-left:  5px solid transparent;
-    border-right: 5px solid transparent;
+    border-left:  var(--label-border-size) solid transparent;
+    border-right: var(--label-border-size) solid transparent;
     
     /* decrease the font size */
     font-size: 13px;
@@ -126,13 +143,5 @@ div.input > input:hover ~ label{
 div.input > input:focus ~ label{
     
     /* colored text on focus */
-    color: #0B6 !important;
+    color: var(--primary-color) !important;
 }
-
-/* different colors of the focussed label */
-div.input.orange > input:focus ~ label {color: #F62 !important;}
-div.input.yellow > input:focus ~ label {color: #FC1 !important;}
-div.input.purple > input:focus ~ label {color: #60E !important;}
-div.input.green  > input:focus ~ label {color: #0B6 !important;}
-div.input.blue   > input:focus ~ label {color: #06B !important;}
-div.input.red    > input:focus ~ label {color: #B02 !important;}
