@@ -5,10 +5,11 @@
     position: relative;
     
     /* this can be adjusted */
+    --container-margin: 10px;
     height: 56px;
-    width: calc(100% - (2 * /*margin:*/ 10px));
+    width: calc(100% - (2 * /*margin:*/ var(--container-margin)));
     max-width: 220px;
-    margin: 10px;
+    margin: var(--container-margin);
     font-family: "Arial";
 }
 
