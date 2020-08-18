@@ -43,16 +43,18 @@ div.input > input:hover {
 div.input > input:focus {
     
     /* colored border on focus, instead of outline */
-    border: 2.3px solid #0B6;
+    border: 2.3px solid var(--primary-color);
     outline: 0;
 }
-/* different border colors */
-div.input.yellow > input:focus {border-color: #FC1;}
-div.input.orange > input:focus {border-color: #F62;}
-div.input.purple > input:focus {border-color: #60E;}
-div.input.green  > input:focus {border-color: #0B6;}
-div.input.blue   > input:focus {border-color: #06B;}
-div.input.red    > input:focus {border-color: #B02;}
+
+/* define the different primary colors */
+div.input        > input:focus, /* use green as default color */
+div.input.green  > input:focus {--primary-color: #0B6;}
+div.input.blue   > input:focus {--primary-color: #06B;}
+div.input.red    > input:focus {--primary-color: #B02;}
+div.input.yellow > input:focus {--primary-color: #FC1;}
+div.input.orange > input:focus {--primary-color: #F62;}
+div.input.purple > input:focus {--primary-color: #60E;}
 
 
 /* The label describing the input field */
