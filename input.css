@@ -129,13 +129,5 @@ div.input > input:hover ~ label{
 div.input > input:focus ~ label{
     
     /* colored text on focus */
-    color: #0B6 !important;
+    color: var(--primary-color) !important;
 }
-
-/* different colors of the focussed label */
-div.input.orange > input:focus ~ label {color: #F62 !important;}
-div.input.yellow > input:focus ~ label {color: #FC1 !important;}
-div.input.purple > input:focus ~ label {color: #60E !important;}
-div.input.green  > input:focus ~ label {color: #0B6 !important;}
-div.input.blue   > input:focus ~ label {color: #06B !important;}
-div.input.red    > input:focus ~ label {color: #B02 !important;}
