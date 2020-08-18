@@ -4,6 +4,10 @@
     /* this is needed for label-positioning */
     position: relative;
     
+    /* padding properties */
+    --horizontal-padding: 16px;
+    --vertical-padding: 14px;
+    
     /* this can be adjusted */
     --container-margin: 10px;
     height: 56px;
@@ -23,7 +27,7 @@ div.input > input {
     box-sizing: border-box;
     
     /* space around the text */
-    padding: 14px 16px;
+    padding: var(--vertical-padding) var(--horizontal-padding);
     
     /* border */
     border: 1.2px solid rgba(0, 0, 0, .28);
@@ -64,14 +68,14 @@ div.input > label {
     position: absolute;
     top: 50%;
     transform: translate(0%, -50%);
-    left: calc(16px - 2.5px);
+    left: calc(var(--horizontal-padding) - 2.5px);
     
     /* bring it to the top but without being target of mouse events */
     z-index: 100;
     pointer-events: none;
     
     /* handle labels with much text */
-    max-width: calc(100% - (2 * 16px + 6px));
+    max-width: calc(100% - (2 * var(--horizontal-padding) + 6px));
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
