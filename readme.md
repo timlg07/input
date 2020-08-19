@@ -6,7 +6,8 @@ demo: [git.tim-greller.de/input](https://tim-greller.de/git/input)
 
 ## How to use
 1. Include the stylesheet:
-```<link rel="stylesheet" href="input.css">```
+    - If you provide the file yourself: <br> ```<link rel="stylesheet" href="input.css">```
+    - If you want to include the latest version automatically without downloading anything from this repository: <br> ```<link rel="stylesheet" href="http://git.tim-greller.de/input/input.css">```
 2. Create an input with a custom label:
 ```
 <div class="input">
