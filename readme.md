@@ -2,7 +2,7 @@
 (inspired by Googles Material Design)  
 demo: [git.tim-greller.de/input](https://tim-greller.de/git/input)  
 
-![Result](inpt.gif)
+![Result](input.gif)
 
 ## How to use
 1. Include the stylesheet:

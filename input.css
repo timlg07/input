@@ -1,5 +1,6 @@
 /* Container */
 .input {
+    box-sizing: border-box;
     
     /* this is needed for label-positioning */
     position: relative;
@@ -9,19 +10,16 @@
     --vertical-padding: 14px;
     
     /* this can be adjusted */
-    --container-margin: 10px;
     height: 56px;
-    width: calc(100% - (2 * var(--container-margin)));
+    width: 100%;
     max-width: 220px;
-    margin: var(--container-margin);
-    font-family: "Arial";
 }
 
 
 /* Input field */
-div.input > input {
+.input input {
     
-    /* input fills the whole size of the div */
+    /* input fills the whole size of the container (.input) */
     width:  100%;
     height: 100%;
     box-sizing: border-box;
@@ -40,14 +38,14 @@ div.input > input {
     font-size: 17px;
 }
 
-div.input > input:hover {
+.input input:hover {
     
     /* darker and thicker border on hover */
     --input-border-size: 1.6px;
     border-color: rgba(0, 0, 0, .445);
 }
 
-div.input > input:focus {
+.input input:focus {
     
     /* colored border on focus, instead of outline */
     --input-border-size: 2.3px;
@@ -56,17 +54,17 @@ div.input > input:focus {
 }
 
 /* define the different primary colors */
-div.input, /* use green as default color */
-div.input.green  {--primary-color: #0B6;}
-div.input.blue   {--primary-color: #06B;}
-div.input.red    {--primary-color: #B02;}
-div.input.yellow {--primary-color: #FC1;}
-div.input.orange {--primary-color: #F62;}
-div.input.purple {--primary-color: #60E;}
+.input, /* use green as default color */
+.input.green  {--primary-color: #0B6;}
+.input.blue   {--primary-color: #06B;}
+.input.red    {--primary-color: #B02;}
+.input.yellow {--primary-color: #FC1;}
+.input.orange {--primary-color: #F62;}
+.input.purple {--primary-color: #60E;}
 
 
 /* The label describing the input field */
-div.input > label {
+.input label {
     
     /* position the label in the center of the input field */
     position: absolute;
@@ -109,14 +107,14 @@ div.input > label {
     font-size: 17px;
 }
 
-div.input > label:focus {
+.input label:focus {
     
     /* remove outline */
     outline: 0; 
 }
 
-div.input > input:focus ~ label,
-div.input > input:valid ~ label {
+.input > input:focus ~ label,
+.input > input:valid ~ label {
 
     /* new position at the top */
     top: calc(2.3px / 2);
@@ -134,13 +132,13 @@ div.input > input:valid ~ label {
     font-size: 13px;
 }
 
-div.input > input:hover ~ label{
+.input > input:hover ~ label{
     
     /* darker text onHover */
     color: rgba(0, 0, 0, .76);
 }
 
-div.input > input:focus ~ label{
+.input > input:focus ~ label{
     
     /* colored text on focus */
     color: var(--primary-color) !important;
