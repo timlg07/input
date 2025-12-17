@@ -114,7 +114,8 @@
 }
 
 .input > input:focus ~ label,
-.input > input:valid ~ label {
+.input > input[required]:valid ~ label,
+.input > input[placeholder]:not(:placeholder-shown) ~ label {
 
     /* new position at the top */
     top: calc(2.3px / 2);
@@ -132,13 +133,13 @@
     font-size: 13px;
 }
 
-.input > input:hover ~ label{
+.input > input:hover ~ label {
     
     /* darker text onHover */
     color: rgba(0, 0, 0, .76);
 }
 
-.input > input:focus ~ label{
+.input > input:focus ~ label {
     
     /* colored text on focus */
     color: var(--primary-color) !important;
